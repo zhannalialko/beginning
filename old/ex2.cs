@@ -1,10 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations;
 
 namespace HelloWorld
 {
-    class Program
+    class Program4
     {
-        static void Main(string[] args)
+        void Method4(string[] args)
         {
             Console.WriteLine("Gib mir deinen Namen");
             string name = Console.ReadLine();
