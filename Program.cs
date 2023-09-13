@@ -20,6 +20,10 @@
                 Console.WriteLine("Der Name ist ja kurz");
             }
 
+            for(int zahlvariable=0;zahlvariable<10;zahlvariable++)
+            {
+                Console.WriteLine(zahlvariable);
+            }
         }
 
     }
