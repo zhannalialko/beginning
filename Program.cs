@@ -11,23 +11,13 @@ namespace Example{
     {
         static void Main(string[] args)
         {
-        //Aufgabe 9: Frage den Nutzer nach einer Eingabe mit Semikolons ( ; ) und Splitte die Eingabe an diesem Zeichen. Gebe die einzelnen Werte auf der Console aus.
+        //Aufgabe 10: Frage den Nutzer nach einer Eingabe und überprüfe die Texteingabe des Nutzers, ob die Zeichen „abc“ in der Eingabe enthalten sind. Gebe true oder false auf der Konsole aus.
 
-        Console.WriteLine("Schreib etwas mit ;");
+        Console.WriteLine("Schreib etwas: ");
         string eingabe = Console.ReadLine();
-        
-            while(eingabe.Contains(';') == false)
-            {
-                Console.WriteLine("Schreib bitte etwas mit ;");
-                eingabe = Console.ReadLine();
-            }
-        string[] ergebnis = eingabe.Split(";");
+        string str = "abc";
 
-        Console.Write("Ergebnis: ");
-        foreach(string str in ergebnis)
-        {
-            Console.WriteLine(str + "\n");
-        }    
+        Console.WriteLine(eingabe.Contains(str));
         }
     }
 }
