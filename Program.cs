@@ -11,42 +11,36 @@ namespace Example{
     {
         static void Main(string[] args)
         {
-        //Aufgabe 12: Laufe mit einer For-Schleife über die Namen der Azubis & Studenten. Wenn der Name des Azubis ein „e“ enthält, gebe den Namen aus, ansonsten nicht.
-        Console.WriteLine("Schreib Namen von Studenten und teile die Namen mit ',': ");
+        //Aufgabe 13: Frage den Nutzer  wie viele Einträge er in einem int-Array haben möchte. 
+        //Initialisiere ein int-Array von dieser Größe und befülle dieses Int Array in einer Schleife, 
+        //indem du den Nutzer jedes Mal frägst, welche Zahl eingetragen werden soll.  
+
+        Console.WriteLine("Schreib, wie viele Einträge du in einem int-Array haben möchtest ");
         string eingabe = Console.ReadLine();
 
-        string[] ergebnis = eingabe.Split(",");
+        int zahl = Convert.ToInt16(eingabe);
+        int i = 0;
+        var reihe = new List<int>{};
 
-            foreach(string name in ergebnis)
-            {
-                if(name.Contains('e'))
-                {
-                    Console.WriteLine($"Namen mit e : {name}");
-                }
-            }
-
-            //Aufgabe 12b: Wiederhole das Ganze und lass den Nutzer einen Buchstaben bestimmen, nach dem gesucht wird.
-            Console.WriteLine("Schreib Namen von Studenten und teile die Namen mit ',': ");
+        while(i < zahl)
+        {
+            Console.WriteLine("Scheib eine Zahl");
             string eingabe1 = Console.ReadLine();
-            
-            Console.WriteLine("Schreib eine Buchstabe: ");
-            string buchstabe = Console.ReadLine();
-
-            string[] ergebnis1 = eingabe1.Split(",");
-            
-            foreach(string name in ergebnis1)
-            {
-                if(name.Contains(buchstabe))
-                {
-                    Console.WriteLine($"Namen mit {buchstabe} : {name}");
-                }
-            }
+            int zahl1 = Convert.ToInt16(eingabe1);
+            reihe.Add(zahl1);
+            i++;
         }
+        
+        foreach(var item in reihe)
+        {
+            Console.WriteLine(item);
+        }
+    }
 
         
         
-        
-    }
+    }      
 }
+
 
 
