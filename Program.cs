@@ -11,19 +11,41 @@ namespace Example{
     {
         static void Main(string[] args)
         {
-        //Aufgabe 11: Frage den Nutzer nach einer Zahl und zähle von dieser Rückwärts bis 0
-
-        Console.WriteLine("Schreib ein Zahl");
+        //Aufgabe 12: Laufe mit einer For-Schleife über die Namen der Azubis & Studenten. Wenn der Name des Azubis ein „e“ enthält, gebe den Namen aus, ansonsten nicht.
+        Console.WriteLine("Schreib Namen von Studenten und teile die Namen mit ',': ");
         string eingabe = Console.ReadLine();
 
-        int zahl = Convert.ToInt16(eingabe);
+        string[] ergebnis = eingabe.Split(",");
 
-        while(zahl>=0)
-        {
-            Console.WriteLine(zahl);
-            zahl--;
+            foreach(string name in ergebnis)
+            {
+                if(name.Contains('e'))
+                {
+                    Console.WriteLine($"Namen mit e : {name}");
+                }
+            }
+
+            //Aufgabe 12b: Wiederhole das Ganze und lass den Nutzer einen Buchstaben bestimmen, nach dem gesucht wird.
+            Console.WriteLine("Schreib Namen von Studenten und teile die Namen mit ',': ");
+            string eingabe1 = Console.ReadLine();
+            
+            Console.WriteLine("Schreib eine Buchstabe: ");
+            string buchstabe = Console.ReadLine();
+
+            string[] ergebnis1 = eingabe1.Split(",");
+            
+            foreach(string name in ergebnis1)
+            {
+                if(name.Contains(buchstabe))
+                {
+                    Console.WriteLine($"Namen mit {buchstabe} : {name}");
+                }
+            }
         }
-        }
+
+        
+        
+        
     }
 }
 
