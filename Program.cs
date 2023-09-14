@@ -9,11 +9,12 @@ namespace Example{
     {
         static void Main(string[] args)
         {
-        //Aufgabe 7: Frage den Nutzer nach einem Text und ersetze im Text alle vorkommenden „U“ und „u“ durch „G“ und „g“
-        Console.WriteLine("Schreib etwas!");
+        //Aufgabe 8: Frage den Nutzer nach einer Texteingabe und fülle diese mit bis zu 20 Stellen mit einem y von links auf
+
+        Console.WriteLine("Schreib etwas");
         string eingabe = Console.ReadLine();
-        
-        Console.WriteLine(eingabe.Replace('U', 'G').Replace('u', 'g'));
+
+        Console.WriteLine(eingabe.PadLeft(20, 'y'));
         }
     }
 }
