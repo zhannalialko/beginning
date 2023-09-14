@@ -11,13 +11,18 @@ namespace Example{
     {
         static void Main(string[] args)
         {
-        //Aufgabe 10: Frage den Nutzer nach einer Eingabe und überprüfe die Texteingabe des Nutzers, ob die Zeichen „abc“ in der Eingabe enthalten sind. Gebe true oder false auf der Konsole aus.
+        //Aufgabe 11: Frage den Nutzer nach einer Zahl und zähle von dieser Rückwärts bis 0
 
-        Console.WriteLine("Schreib etwas: ");
+        Console.WriteLine("Schreib ein Zahl");
         string eingabe = Console.ReadLine();
-        string str = "abc";
 
-        Console.WriteLine(eingabe.Contains(str));
+        int zahl = Convert.ToInt16(eingabe);
+
+        while(zahl>=0)
+        {
+            Console.WriteLine(zahl);
+            zahl--;
+        }
         }
     }
 }
