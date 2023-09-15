@@ -11,108 +11,61 @@ namespace HelloWorld
     {
         static void Main(string[] args)
         {
+            // Aufgabe: Zahlenraten
+            // Frage den Nutzer nach einer zahl zwischen 1 bis 100
+            // Erstelle eine RandomZahl => Hinweis
+            //Überprüft die zahl ob es numberToGuess ist
+            //wenn ja => hat der Spieler gewonnen
+            //Wenn nein => sage ob die gesuchte Zahl kleiner oder größer als die eingegebene Zahl ist.
+            
+            
 
-        Console.WriteLine("Schreib eine Zahl");
-        string numero1 = Console.ReadLine();
+            Console.WriteLine("Schreib eine Zahl von 0 bis 100");
+            string userstring = Console.ReadLine();
 
-        Console.WriteLine("Schreib andere Zahl");
-        string numero2 = Console.ReadLine();
+            int usernumber = Convert.ToInt16(userstring);
 
-        string operators ="";
-
-        do
-        {
-            Console.WriteLine("Schreib den operator (+, -, *, / oder %)");
-            operators = Console.ReadLine();
-        } while(operators != "+" && operators != "-" && operators != "*" && operators != "/" && operators != "%");
-        
-        switch(operators)
-        {
-            case "+":
-                int ergebnis = AdditionWithReturn(numero1, numero2);
-                break;
-            case "-":
-                Substract(numero1, numero2);
-                break;
-            case "*":
-                Multiplikation(numero1, numero2);
-                break;
-             case "/":
-                Division(numero1, numero2);
-                break;
-            case "%":
-                Teil(numero1, numero2);
-                break;
-            default:
-                Console.WriteLine("Ich kenne diesen Operator nicht");
-                 break;
-        }
+            Random random = new Random();
+            int numberToGuesss = random.Next(0, 101);
+            string ergebnis = "";
+            while(ergebnis != "Genau!")
+            {
+                ergebnis = Vergleich(usernumber, numberToGuesss);
+                if(ergebnis == "Genau!") {
+                    break;
+                }
+                Console.WriteLine("Schreib eine Zahl von 0 bis 100");
+                userstring = Console.ReadLine();
+                usernumber = Convert.ToInt16(userstring);
+            }
 
         }
-        static int AdditionWithReturn(string zahl1, string zahl2)
-        {
-            int numero1 = Convert.ToInt32(zahl1);
-            int numero2 = Convert.ToInt32(zahl2);
-            return numero1 + numero2;
-        }
-        
-        static void Addition(string zahl1, string zahl2)
-        {
-            int numero1 = Convert.ToInt32(zahl1);
-            int numero2 = Convert.ToInt32(zahl2);
-            Console.WriteLine(numero1 + numero2);
-        }
-        
-        static void Substract(string zahl1, string zahl2)
-        {
-            int numero1 = Convert.ToInt32(zahl1);
-            int numero2 = Convert.ToInt32(zahl2);
-            Console.WriteLine(numero1 - numero2);
-        }
-        
-        static void Multiplikation(string zahl1, string zahl2)
-        {
-            int numero1 = Convert.ToInt32(zahl1);
-            int numero2 = Convert.ToInt32(zahl2);
-            Console.WriteLine(numero1 * numero2);
-        }
 
-        static void Division(string zahl1, string zahl2)
+        static string Vergleich(int zahl1, int zahl2)
         {
-            int numero1 = Convert.ToInt32(zahl1);
-            int numero2 = Convert.ToInt32(zahl2);
-            Console.WriteLine(numero1 / numero2);
+            if(zahl1>zahl2)
+            {
+                Console.WriteLine("zu groß");
+                Console.WriteLine("Versuch noch einmal");
+                return "zu groß";
+            }
+            else if(zahl1<zahl2)
+            {
+                Console.WriteLine("zu klein");
+                Console.WriteLine("Versuch noch einmal");
+                return "zu klein";            
+            }
+            else
+            {
+                Console.WriteLine("Genau!");
+                return "Genau!";
+                
+            }
         }
-        static void Teil(string zahl1, string zahl2)
-        {
-            int numero1 = Convert.ToInt32(zahl1);
-            int numero2 = Convert.ToInt32(zahl2);
-            Console.WriteLine(numero1 % numero2);
-        }
-
-        static void Addition(int zahl1, int zahl2)
-        {
-            Console.WriteLine(zahl1 + zahl2);
-        }
-        static void Substract(int zahl1, int zahl2)
-        {
-            Console.WriteLine(zahl1 - zahl2);
-        }  
-        static void Multiplikation(int zahl1, int zahl2)
-        {
-            Console.WriteLine(zahl1 * zahl2);
-        }  
-        static void Division(int zahl1, int zahl2)
-        {
-            Console.WriteLine(zahl1 / zahl2);
-        }
-        static void Teil(int zahl1, int zahl2)
-        {
-            Console.WriteLine(zahl1 % zahl2);
-        }
-        
     }
+    
 }
+
 
 
 
