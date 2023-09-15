@@ -12,15 +12,23 @@ namespace HelloWorld
     {
         static void Main(string[] args)
         {
-           Console.WriteLine("Gib eine ersten Zahl");
-           int zahl1 = Convert.ToInt32(Console.ReadLine());
-           Console.WriteLine("Gib eine zweite Zahl");
-           int zahl2 = Convert.ToInt32(Console.ReadLine());
+           int [] myNumbers = new int[5];
 
-           int ergebnis = zahl1 % zahl2;
-           Console.WriteLine($"Die Division von {zahl1} und {zahl2} erzeugt den Rest {ergebnis}");
-
+           for(int i = 0; i<5; i++)
+           {
+            Console.WriteLine("Gebe ein Zahl");
+            int number = Convert.ToInt16(Console.ReadLine());
+            myNumbers[i] = number;
+           }
+            int klein = myNumbers.Min();
+            int groß = myNumbers.Max();
+            double mitte = myNumbers.Average();
+            
+            Console.WriteLine($"Die kleinste Zahl ist {klein}");
+            Console.WriteLine($"Die größte Zahl ist {groß}");
+            Console.WriteLine($"Der Durchschnitt ist {mitte}");
         }
+
     }
     
 }
