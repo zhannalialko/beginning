@@ -23,30 +23,28 @@ namespace HelloWorld
                 operators = Console.ReadLine();
             } while(operators != "+" && operators != "-" && operators != "*" && operators != "/" && operators != "%");
 
-            if(operators == "+")
+            switch(operators)
             {
-                Console.WriteLine($"Das Ergebnis: {a + b}");
+                case "+":
+                    Console.WriteLine(a + b);
+                    break;
+                case "-":
+                    Console.WriteLine(a - b);
+                    break;
+                case "*":
+                    Console.WriteLine(a * b);
+                    break;
+                case "/":
+                    Console.WriteLine(a / b);
+                    break;
+                case "%":
+                    Console.WriteLine(a % b);
+                    break;
+                default:
+                    Console.WriteLine("Ich kenne diesen Operator nicht");
+                    break;
+
             }
-            else if(operators == "-")
-            { 
-               Console.WriteLine($"Das Ergebnis: {a - b}");
-            }
-            else if(operators == "*")
-            {
-                Console.WriteLine($"Das Ergebnis: {a * b}");
-            }
-            else if(operators == "/")
-            {
-                Console.WriteLine($"Das Ergebnis: {a / b}");
-            }
-            else if(operators == "%")
-            {
-                Console.WriteLine($"Das Ergebnis: {a % b}");
-            }
-            else
-            {
-                Console.WriteLine("Falsche Antwort!");
-            }            
         }
     }
 }
