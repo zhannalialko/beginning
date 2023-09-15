@@ -14,33 +14,26 @@ namespace HelloWorld
             string eingabe = Console.ReadLine();
 
             int zahl = Convert.ToInt16(eingabe);
-            int i = 1;
-            var reihe = new List<int> {};
 
-            while (i < zahl)
+            for(int i=1; i<zahl; i++)
             {
-                foreach(var item in reihe)
+                if(i %3==0 && i%5==0)
                 {
-                    
-                    Console.WriteLine(item);
-                    if(item%3==0)
-                    {
-                        Console.WriteLine("Fizz");
-                    }
-                    else if(item%5==0)
-                    {
-                        Console.WriteLine("Buzz");
-                    }
-                    else if (item %3==0 && i%5==0)
-                    {
-                        Console.WriteLine("FizzBuzz");
-                    }
+                    Console.WriteLine("FizzBuzz");
                 }
-                foreach(var item in reihe)
+                else if(i%5==0)
                 {
-                    reihe.Add(i);
+                    Console.WriteLine("Buzz");
                 }
-                i++;
+                else if (i %3==0)
+                {
+                    Console.WriteLine("Fizz");
+                }
+                else
+                {
+                    Console.WriteLine(i);
+                }
+                
             }
 
         }
