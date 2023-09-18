@@ -13,23 +13,18 @@ namespace HelloWorld
     {
         static void Main(string[] args)
         {
-            string miss = "MissiSsiPpi";
-            miss = miss.ToLower();
+            Console.WriteLine("Gib eine große Zahl");
+            int eingabe = Convert.ToInt32(Console.ReadLine());
 
-            foreach(char item in miss)
-            {    
-                Console.WriteLine($" {item} = {miss.Count(c => c== item)}");
-            }
-            Console.WriteLine ("---------");
+            float Tag = eingabe / 24 / 60 / 60;
+            float restVonTagen = eingabe - Tag;
+            float Stunde = restVonTagen / 60 / 60;
+            float restVonStunden = eingabe - Tag - Stunde;
+            float Minuten = restVonStunden / 60;
+            float restVonMinuten = eingabe - Tag - Stunde - Minuten;
+            float Sekunden = restVonMinuten;
 
-            char p = 'p';
-            char m = 'm';
-            char i = 'i';
-            char s = 's';
-            Console.WriteLine($" {p} = {miss.Count(c => c == p)}");
-            Console.WriteLine($" {m} = {miss.Count(c => c == m)}");
-            Console.WriteLine($" {i} = {miss.Count(c => c == i)}");
-            Console.WriteLine($" {s} = {miss.Count(c => c == s)}");
+            Console.WriteLine($"{eingabe} => {Tag}, {Stunde}, {Minuten}, {Sekunden}");
         
         }
 
