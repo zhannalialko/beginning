@@ -13,19 +13,18 @@ namespace HelloWorld
     {
         static void Main(string[] args)
         {
-           Console.WriteLine("Gib eine Zahl");
-           int eingabe = Convert.ToInt32(Console.ReadLine());
-
+            Console.WriteLine("Gib eine Zahl");
+            int eingabe = Convert.ToInt32(Console.ReadLine());
+            int fib1 = 1;
+            int fib2 = 1;
+            int ergebnis = 0;
             
-            for(; eingabe>=0; eingabe--)
+            while(eingabe>=(fib1 + fib2))
             {
-                Console.WriteLine(eingabe);
-            }
-
-            while(eingabe>0)
-            {
-                Console.WriteLine(eingabe);
-                eingabe--;
+                ergebnis = fib1+fib2;
+                Console.WriteLine(ergebnis);
+                fib1 = fib2;
+                fib2 = ergebnis;
             }
         
         }
