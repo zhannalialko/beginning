@@ -17,10 +17,17 @@ namespace HelloWorld
            int eingabe = Convert.ToInt32(Console.ReadLine());
 
             
-            for(; eingabe>0; eingabe--)
+            for(; eingabe>=0; eingabe--)
             {
                 Console.WriteLine(eingabe);
             }
+
+            while(eingabe>0)
+            {
+                Console.WriteLine(eingabe);
+                eingabe--;
+            }
+        
         }
 
     }
