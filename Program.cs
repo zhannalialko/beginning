@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.Globalization;
 using System.Numerics;
 using System.Reflection.Metadata;
 using System.Runtime.CompilerServices;
@@ -12,40 +13,25 @@ namespace HelloWorld
     {
         static void Main(string[] args)
         {
-           Console.WriteLine("Schreib einen Text");
-           string eingabe = Console.ReadLine();
+           Console.WriteLine("Wie viel Zahlen möchtest du in einem Array eingeben?");
+           int eingabe = Convert.ToInt32(Console.ReadLine());
 
-           Console.WriteLine($"the length of the text is {eingabe.Length}");
+           int[] numbers = new int[eingabe];
 
-           char ch = 'h';
-
-           int freq = eingabe.Split(ch).Length - 1;
-           Console.WriteLine($"there are {freq} h's");
-
-           int count = 0;
-           int count1 = 0;
-           for(int i=0; i<eingabe.Length; i++)
+           for(int i = 0; i < numbers.Length; i++)
            {
-                if(eingabe[i] == 'h')
-                {
-                    count ++;
-                }
+                Console.WriteLine("Gib eine Zahl");
+                int zahl = Convert.ToInt32(Console.ReadLine());
+                numbers[i] = zahl;
+
            }
-
-           Console.WriteLine($"Es gibt {count} h's in den Text");
-
-           foreach(char c in eingabe)
-           {
-                if(c == 'h')
-                {
-                    count1 ++;
-                }
-            }
-            Console.WriteLine($"Es gibt {count1} h's in den Text");
-
-            int numberofh = eingabe.Count(c => c == 'h');
-
-            Console.WriteLine($"Es gibt {numberofh} h's in den Text");
+            int klein = numbers.Min();
+            int groß = numbers.Max();
+            double mitte = numbers.Average();
+            
+            Console.WriteLine($"Die kleinste Zahl ist {klein}");
+            Console.WriteLine($"Die größte Zahl ist {groß}");
+            Console.WriteLine($"Der Durchschnitt ist {mitte}");
 
         }
 
