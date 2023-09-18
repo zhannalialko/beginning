@@ -13,19 +13,23 @@ namespace HelloWorld
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Gib eine Zahl");
-            int eingabe = Convert.ToInt32(Console.ReadLine());
-            int fib1 = 1;
-            int fib2 = 1;
-            int ergebnis = 0;
-            
-            while(eingabe>=(fib1 + fib2))
-            {
-                ergebnis = fib1+fib2;
-                Console.WriteLine(ergebnis);
-                fib1 = fib2;
-                fib2 = ergebnis;
+            string miss = "MissiSsiPpi";
+            miss = miss.ToLower();
+
+            foreach(char item in miss)
+            {    
+                Console.WriteLine($" {item} = {miss.Count(c => c== item)}");
             }
+            Console.WriteLine ("---------");
+
+            char p = 'p';
+            char m = 'm';
+            char i = 'i';
+            char s = 's';
+            Console.WriteLine($" {p} = {miss.Count(c => c == p)}");
+            Console.WriteLine($" {m} = {miss.Count(c => c == m)}");
+            Console.WriteLine($" {i} = {miss.Count(c => c == i)}");
+            Console.WriteLine($" {s} = {miss.Count(c => c == s)}");
         
         }
 
