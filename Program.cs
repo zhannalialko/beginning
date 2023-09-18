@@ -12,21 +12,41 @@ namespace HelloWorld
     {
         static void Main(string[] args)
         {
-           int [] myNumbers = new int[5];
+           Console.WriteLine("Schreib einen Text");
+           string eingabe = Console.ReadLine();
 
-           for(int i = 0; i<5; i++)
+           Console.WriteLine($"the length of the text is {eingabe.Length}");
+
+           char ch = 'h';
+
+           int freq = eingabe.Split(ch).Length - 1;
+           Console.WriteLine($"there are {freq} h's");
+
+           int count = 0;
+           int count1 = 0;
+           for(int i=0; i<eingabe.Length; i++)
            {
-            Console.WriteLine("Gebe ein Zahl");
-            int number = Convert.ToInt16(Console.ReadLine());
-            myNumbers[i] = number;
+                if(eingabe[i] == 'h')
+                {
+                    count ++;
+                }
            }
-            int klein = myNumbers.Min();
-            int groß = myNumbers.Max();
-            double mitte = myNumbers.Average();
-            
-            Console.WriteLine($"Die kleinste Zahl ist {klein}");
-            Console.WriteLine($"Die größte Zahl ist {groß}");
-            Console.WriteLine($"Der Durchschnitt ist {mitte}");
+
+           Console.WriteLine($"Es gibt {count} h's in den Text");
+
+           foreach(char c in eingabe)
+           {
+                if(c == 'h')
+                {
+                    count1 ++;
+                }
+            }
+            Console.WriteLine($"Es gibt {count1} h's in den Text");
+
+            int numberofh = eingabe.Count(c => c == 'h');
+
+            Console.WriteLine($"Es gibt {numberofh} h's in den Text");
+
         }
 
     }
