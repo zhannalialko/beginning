@@ -13,22 +13,40 @@ namespace HelloWorld
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Gib eine große Zahl");
-            int amountSeconds = Convert.ToInt32(Console.ReadLine());
-
-            int amountDays = amountSeconds / 24 / 60 / 60;
-            Console.WriteLine("Anzahl Tage:" + amountDays);
-            int restSeconds = amountSeconds % ( 24 * 60 * 60);
-            int amountHours = restSeconds / 60 / 60;
-            restSeconds = restSeconds % (60 * 60);
-            int amountMinutes = restSeconds / 60 ;
-            restSeconds = restSeconds % 60;
-            
-            Console.WriteLine($@"Aus der Anzahl {amountSeconds} wird {amountDays} Tage, {amountHours}
-                                Stunden, {amountMinutes} Minuten, {restSeconds} Sekunden");
-        
+            Console.WriteLine("Schreib die Geschwindigkeit");
+            int zahl = Convert.ToInt32(Console.ReadLine());
+            string result = Fahren(zahl);
+            Console.WriteLine($"Das Auto {result}");
         }
 
+        static string Fahren(int geschwindigkeit)
+        {
+            
+            if(geschwindigkeit<1)
+            {
+                return "steht.";
+            }
+            else if(geschwindigkeit<10)
+            {
+                return "schleicht";
+            }
+            else if(geschwindigkeit<20)
+            {
+                return "fährt";
+            }
+            else if(geschwindigkeit<50)
+            {
+                return "fährt schneller";
+            }
+            else if(geschwindigkeit>=50)
+            {
+                return "schnell";
+            }
+            else
+            {
+                return "ist kaputt";
+            }
+        }
     }
     
 }
