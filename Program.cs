@@ -1,11 +1,14 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.Data.SqlTypes;
 using System.Globalization;
+using System.Net.WebSockets;
 using System.Numerics;
 using System.Reflection.Metadata;
 using System.Runtime.CompilerServices;
 using System.Security.AccessControl;
 using System.Security.Cryptography.X509Certificates;
+using System.Xml.XPath;
 using Microsoft.VisualBasic;
 namespace HelloWorld
 {
@@ -13,43 +16,64 @@ namespace HelloWorld
     {
         static void Main(string[] args)
         {
-            int[] myArray = new int[] {20, 50, 11, 2, 49};
+            int initialmoney = 10000;
+            int endKapital = initialmoney;
+            int initialrate = 10;
+            int anzahl = 0;
 
-            foreach(int i in myArray)
+            while(endKapital > 0 && anzahl < 20)
             {
-                Console.Write($"{i} ");
-                Console.Write(" ");
+                Random random = new Random();
+                int game = random.Next(0,37);
+                int ergebnis = Games(initialmoney, game, initialrate);
+                int rate = Gamerate(initialmoney, ergebnis, initialrate);
+                
+                for(int i = 0; i < 20; i ++)
+                {
+                    ergebnis = Games(ergebnis, game, rate);
+                    endKapital = ergebnis;
+                }
+                anzahl++;
+                Console.WriteLine($"Anzahl des Spieles {anzahl}, die geworfene Zahl {game}, Kapital davor {initialmoney}, Kapital danach {endKapital}");
             }
+        }   
 
-            Console.WriteLine("");
-
-            var myArray1 = myArray.Reverse();
-            foreach(int i in myArray1)
+        static int Games(int money, int number, int rate)
+        
+        {
+            if (number %2 == 0) 
             {
-                Console.Write($"{i} ");
-                Console.Write(" ");
+                return money + (rate*2);
             }
-
-            Console.WriteLine("");
-
-            Array.Sort(myArray);
-            foreach(int i in myArray)
+            else
             {
-                Console.Write($"{i} ");
-                Console.Write(" ");
+                return money - rate;
             }
-
-            Console.WriteLine("");
-            
-            Array.Sort(myArray);
-            Array.Reverse(myArray);
-            foreach(int i in myArray)
-            {
-                Console.Write($"{i} ");
-                Console.Write(" ");
-            }
-
         }
+
+        static int Gamerate(int startMoney, int endMoney, int rates)
+        {
+            
+            switch(endMoney)
+            {
+                case >=10000:
+                {
+                    if(endMoney<startMoney)
+                    {
+                        rates *=2;
+                    }
+                    return rates;
+                }
+                    
+                case <10000:
+                {
+                    return rates *=2;
+                }
+
+            }
+            
+        }
+      
     }
     
 }
