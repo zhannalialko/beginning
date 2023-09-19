@@ -14,17 +14,18 @@ namespace HelloWorld
         static void Main(string[] args)
         {
             Console.WriteLine("Gib eine große Zahl");
-            int eingabe = Convert.ToInt32(Console.ReadLine());
+            int amountSeconds = Convert.ToInt32(Console.ReadLine());
 
-            float Tag = eingabe / 24 / 60 / 60;
-            float restVonTagen = eingabe - Tag;
-            float Stunde = restVonTagen / 60 / 60;
-            float restVonStunden = eingabe - Tag - Stunde;
-            float Minuten = restVonStunden / 60;
-            float restVonMinuten = eingabe - Tag - Stunde - Minuten;
-            float Sekunden = restVonMinuten;
-
-            Console.WriteLine($"{eingabe} => {Tag}, {Stunde}, {Minuten}, {Sekunden}");
+            int amountDays = amountSeconds / 24 / 60 / 60;
+            Console.WriteLine("Anzahl Tage:" + amountDays);
+            int restSeconds = amountSeconds % ( 24 * 60 * 60);
+            int amountHours = restSeconds / 60 / 60;
+            restSeconds = restSeconds % (60 * 60);
+            int amountMinutes = restSeconds / 60 ;
+            restSeconds = restSeconds % 60;
+            
+            Console.WriteLine($@"Aus der Anzahl {amountSeconds} wird {amountDays} Tage, {amountHours}
+                                Stunden, {amountMinutes} Minuten, {restSeconds} Sekunden");
         
         }
 
