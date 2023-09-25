@@ -17,9 +17,13 @@ namespace HelloWorld
         static void Main(string[] args)
         {
             List<int> myList = new List<int>(){5,3,7};
-            myList.ForEach(Console.WriteLine);
+            Console.WriteLine("___1___");
 
+            myList.ForEach(Console.WriteLine);
+            
+            Console.WriteLine("___2___");
             Console.WriteLine("Schreib andere Zahlen, zu Aufhören schreib bitte 0");
+            
 
             while(true)
             {
@@ -31,48 +35,50 @@ namespace HelloWorld
                 int zahlEingabe = Convert.ToInt32(eingabeText);
                  myList.Add(zahlEingabe);
             }
-            
+            Console.WriteLine("___3___");
+
             foreach(int item in myList)
             {
                 Console.WriteLine(item);
             }
-            Console.WriteLine("______________");
+            Console.WriteLine("___4___");
 
             myList.Insert(2, 99);
 
             myList.ForEach(Console.WriteLine);
-            Console.WriteLine("______________");
+            Console.WriteLine("___5___");
 
             myList.AddRange(new int []
                 {
                 91,92,93});
 
             myList.ForEach(Console.WriteLine);
-            Console.WriteLine("______________");
+            Console.WriteLine("___6___");
 
             myList.RemoveAt(0);
             myList.ForEach(Console.WriteLine);
-            Console.WriteLine("______________");
+            Console.WriteLine("___7___");
 
             myList.Remove(99);
             myList.ForEach(Console.WriteLine);
-            Console.WriteLine("______________");
+            Console.WriteLine("___8___");
 
             myList.RemoveAt(myList.Count -1);
             myList.ForEach(Console.WriteLine);
-            Console.WriteLine("______________");
+            Console.WriteLine("___9___");
 
             myList.Sort();
             myList.ForEach(Console.WriteLine);
-            Console.WriteLine("______________");
+            Console.WriteLine("___9___");
 
             myList.Reverse();
             myList.ForEach(Console.WriteLine);
-            Console.WriteLine("______________");
+            Console.WriteLine("___9___");
 
-            myList.Contains(2);
+            Console.WriteLine(myList.Contains(2));
+            Console.WriteLine("___10___");
 
-            for(int item =0; item <myList.Count; item++)
+            for(int item = 0; item < myList.Count; item++)
             {
                 if(myList[item] > 80)
                 {
