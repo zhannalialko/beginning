@@ -10,68 +10,58 @@ using System.Security.AccessControl;
 using System.Security.Cryptography.X509Certificates;
 using System.Xml.XPath;
 using Microsoft.VisualBasic;
+using System.IO;
+using System.Text;
 namespace HelloWorld
 {
     class Programm
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Scheir den Zahl");
-            string eingabe1 = Console.ReadLine();
+            string filepath = "C:/TraineeOffice/fff/copy_data.csv";
+            string filepath2 = "C:/TraineeOffice/fff/New Text Document.csv";
+            FileInfo f1 = new FileInfo(filepath);
+            FileInfo f2 = new FileInfo(filepath2);
+            
+            if(f1.Exists)
+            {
+                StreamReader reader = new StreamReader(filepath, Encoding.UTF8);
+                List<string[]> myList = new List<string[]>();
+                reader.ReadLine();
+                while(!reader.EndOfStream)
+                {
+                    myList.Add(reader.ReadLine().Split(';'));
+                }
+                Console.WriteLine(myList[0]);
+                Console.WriteLine(myList.Count);
 
-            Console.WriteLine($"Der Umfang des Kreises ist {UmfangKreis(eingabe1)}");
+                
+                int endAlter = 100;
+                for(int alter = 18; alter<=endAlter; alter++ )
+                {
+                    Console.WriteLine("Aktuell bin ich bei Alter:" + alter);
+                    List<string[]> gefilterteEintraege =  myList
+                                    .Where(w => Convert.ToInt32(w[2]) == alter)
+                                    .ToList();
+                    using(StreamWriter writer = new StreamWriter($"C:/TraineeOffice/fff/New Text Document{alter}.csv", true, Encoding.UTF8))
+                    {
+                        foreach(string[] entry in gefilterteEintraege)
+                        {
+                            writer.WriteLine(string.Join('\t', entry));
+                        }
+                    }
+                }
 
-            Console.WriteLine($"Der Umfang des Quadrats ist {UmfangQuadrat(eingabe1)}");
+            }    
+            else
+            {
+                Console.WriteLine("Diese Datei existiert nicht");
+            }
 
-            Console.WriteLine("Scheir den zweiten Zahl");
-            string eingabe2 = Console.ReadLine();
-            Console.WriteLine($"Der Umfang des Rechtecks ist {UmfangRechteck(eingabe1, eingabe2)}");
 
-            Console.WriteLine($"Der Volumen des Wurfels ist {VolumenWuerfel(eingabe1)}");
-
-            Console.WriteLine("Scheir den dritten Zahl");
-            string eingabe3 = Console.ReadLine();
-            Console.WriteLine($"Der Volumen des Quaders ist {VolumenQuader(eingabe1, eingabe2, eingabe3)}");
-
-        }  
-
-        static double UmfangKreis(string zahl)
-        {
-            double number = Convert.ToDouble(zahl);
-            double result = 2 * 3.14 * number;
-            return result;
-        }  
-
-        static double UmfangQuadrat(string zahl)
-        {
-            double number = Convert.ToDouble(zahl);
-            double result = 4*number;
-            return result;
-        }
-
-        static double UmfangRechteck(string zahl1, string zahl2)
-        {
-            double number1 = Convert.ToDouble(zahl1);
-            double number2 = Convert.ToDouble(zahl2);
-            double result = (2*number1)+(2*number2);
-            return result;
-        }
-
-        static double VolumenWuerfel(string zahl)
-        {
-            double number = Convert.ToDouble(zahl);
-            double result = number*number*number;
-            return result; 
-        }
-
-        static double VolumenQuader(string zahl1, string zahl2, string zahl3)
-        {
-            double number1 = Convert.ToDouble(zahl1);
-            double number2 = Convert.ToDouble(zahl2);
-            double number3 = Convert.ToDouble(zahl3);
-            double result = number1*number2*number3;
-            return result;
-        }
+         
+        } 
+        
     }
 } 
 
