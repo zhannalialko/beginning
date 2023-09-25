@@ -16,78 +16,62 @@ namespace HelloWorld
     {
         static void Main(string[] args)
         {
-            List<int> myList = new List<int>(){5,3,7};
-            Console.WriteLine("___1___");
+            Console.WriteLine("Scheir den Zahl");
+            string eingabe1 = Console.ReadLine();
 
-            myList.ForEach(Console.WriteLine);
-            
-            Console.WriteLine("___2___");
-            Console.WriteLine("Schreib andere Zahlen, zu Aufhören schreib bitte 0");
-            
+            Console.WriteLine($"Der Umfang des Kreises ist {UmfangKreis(eingabe1)}");
 
-            while(true)
-            {
-                string eingabeText = Console.ReadLine();
-                if(eingabeText == "")
-                {
-                    break;
-                }
-                int zahlEingabe = Convert.ToInt32(eingabeText);
-                 myList.Add(zahlEingabe);
-            }
-            Console.WriteLine("___3___");
+            Console.WriteLine($"Der Umfang des Quadrats ist {UmfangQuadrat(eingabe1)}");
 
-            foreach(int item in myList)
-            {
-                Console.WriteLine(item);
-            }
-            Console.WriteLine("___4___");
+            Console.WriteLine("Scheir den zweiten Zahl");
+            string eingabe2 = Console.ReadLine();
+            Console.WriteLine($"Der Umfang des Rechtecks ist {UmfangRechteck(eingabe1, eingabe2)}");
 
-            myList.Insert(2, 99);
+            Console.WriteLine($"Der Volumen des Wurfels ist {VolumenWuerfel(eingabe1)}");
 
-            myList.ForEach(Console.WriteLine);
-            Console.WriteLine("___5___");
+            Console.WriteLine("Scheir den dritten Zahl");
+            string eingabe3 = Console.ReadLine();
+            Console.WriteLine($"Der Volumen des Quaders ist {VolumenQuader(eingabe1, eingabe2, eingabe3)}");
 
-            myList.AddRange(new int []
-                {
-                91,92,93});
+        }  
 
-            myList.ForEach(Console.WriteLine);
-            Console.WriteLine("___6___");
+        static double UmfangKreis(string zahl)
+        {
+            double number = Convert.ToDouble(zahl);
+            double result = 2 * 3.14 * number;
+            return result;
+        }  
 
-            myList.RemoveAt(0);
-            myList.ForEach(Console.WriteLine);
-            Console.WriteLine("___7___");
+        static double UmfangQuadrat(string zahl)
+        {
+            double number = Convert.ToDouble(zahl);
+            double result = 4*number;
+            return result;
+        }
 
-            myList.Remove(99);
-            myList.ForEach(Console.WriteLine);
-            Console.WriteLine("___8___");
+        static double UmfangRechteck(string zahl1, string zahl2)
+        {
+            double number1 = Convert.ToDouble(zahl1);
+            double number2 = Convert.ToDouble(zahl2);
+            double result = (2*number1)+(2*number2);
+            return result;
+        }
 
-            myList.RemoveAt(myList.Count -1);
-            myList.ForEach(Console.WriteLine);
-            Console.WriteLine("___9___");
+        static double VolumenWuerfel(string zahl)
+        {
+            double number = Convert.ToDouble(zahl);
+            double result = number*number*number;
+            return result; 
+        }
 
-            myList.Sort();
-            myList.ForEach(Console.WriteLine);
-            Console.WriteLine("___9___");
-
-            myList.Reverse();
-            myList.ForEach(Console.WriteLine);
-            Console.WriteLine("___9___");
-
-            Console.WriteLine(myList.Contains(2));
-            Console.WriteLine("___10___");
-
-            for(int item = 0; item < myList.Count; item++)
-            {
-                if(myList[item] > 80)
-                {
-                    myList.RemoveAt(item);
-                    item--;
-                }
-            }
-            myList.ForEach(Console.WriteLine);
-        }    
+        static double VolumenQuader(string zahl1, string zahl2, string zahl3)
+        {
+            double number1 = Convert.ToDouble(zahl1);
+            double number2 = Convert.ToDouble(zahl2);
+            double number3 = Convert.ToDouble(zahl3);
+            double result = number1*number2*number3;
+            return result;
+        }
     }
 } 
 
