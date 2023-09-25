@@ -16,20 +16,60 @@ namespace HelloWorld
     {
         static void Main(string[] args)
         {
-            List<int> zahlen = new List<int>() {45, 65, 34, 89, 99}; 
-            int summeFromMethod = Sum(zahlen);
-            Console.WriteLine(summeFromMethod);
-        }
+            Console.WriteLine("Schreib die erste Zahl");
+            int zahl1 = Convert.ToInt32(Console.ReadLine());
 
-        static int Sum(List<int> toCalculate)
-        {
-            int result = 0;
-            foreach(int value in toCalculate)
+            Console.WriteLine("Schreib die zweite Zahl");
+            int zahl2 = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("Schreib den Operator");
+            string operators = Console.ReadLine();
+            
+            switch(operators)
             {
-               result += value; 
+                case "+":
+                {
+                    Console.WriteLine(zahl1 + zahl2);
+                    break;
+                }
+                case "-":
+                {
+                    Console.WriteLine(zahl1 - zahl2);
+                    break;
+                }
+                case "*":
+                {
+                    Console.WriteLine(zahl1*zahl2);
+                    break;
+                }
+                case "/":
+                {
+                    if(zahl2!=0)
+                    {
+                        Console.WriteLine(zahl1/zahl2);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Kaputt");
+                    }
+                break;
+                    }
+                case "%":
+                {
+                    if(zahl2!=0)
+                    {
+                        Console.WriteLine(zahl1/zahl2);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Kaputt");
+                    }
+                    break;
+                }
+
             }
-            return result;
-        }
+
+        }    
     }
 } 
 
