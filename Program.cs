@@ -17,55 +17,114 @@ namespace HelloWorld
     class Programm
     {
         static void Main(string[] args)
-        {
-            string filepath = "C:/TraineeOffice/fff/copy_data.csv";
-            string filepath2 = "C:/TraineeOffice/fff/New Text Document.csv";
-            FileInfo f1 = new FileInfo(filepath);
-            FileInfo f2 = new FileInfo(filepath2);
+        {   
+            int geschwindgkeit = 0;
+            bool motorLaeuft = false;
+            int aktuellerGang = 1;
+
+            geschwindgkeit = Beschleunigen(motorLaeuft, geschwindgkeit, aktuellerGang);
+            motorLaeuft = Starten(motorLaeuft);
+            motorLaeuft = Starten(motorLaeuft);
+
+            motorLaeuft = Ausschalten(motorLaeuft);
+            motorLaeuft = Ausschalten(motorLaeuft);
+            motorLaeuft = Starten(motorLaeuft);
+            geschwindgkeit = Beschleunigen(motorLaeuft, geschwindgkeit, aktuellerGang);
+            geschwindgkeit = Beschleunigen(motorLaeuft, geschwindgkeit, aktuellerGang);
+            geschwindgkeit = Beschleunigen(motorLaeuft, geschwindgkeit, aktuellerGang);
+            geschwindgkeit = Bremsen(motorLaeuft, geschwindgkeit, aktuellerGang);
+            geschwindgkeit = Beschleunigen(motorLaeuft, geschwindgkeit, aktuellerGang);
+            geschwindgkeit = Bremsen(motorLaeuft, geschwindgkeit, aktuellerGang);
+            geschwindgkeit = Bremsen(motorLaeuft, geschwindgkeit, aktuellerGang);
+            geschwindgkeit = Bremsen(motorLaeuft, geschwindgkeit, aktuellerGang);
+
+
             
-            if(f1.Exists)
+
+            //Wir erstellen Methoden wie ein Auto fährt
+
+            //Erstelle eine Methoden um das Auto zu starten
+            //   - Wenn das auto schonmal gestartet wurde, soll die Meldung kommen, Auto läuft bereits
+
+            //Auto ausschalten
+
+            //erstelle eine Methode Beschleunigen, welche die Geschwindigkeit um 10 erhöht.
+            //erstellen eine Methode Bremsen
+
+            // Erstelle eine Methode Hochschalten und eine Methode Runterschalten
+            // um die Gänge zu erhöhen bzw. reduzieren
+
+            // Gebe immer innerhalb der Methode aus was der aktuelle Status ist.
+            // z.B. Hochgeschalten von Gang 3 auf 4
+            // z.B. Runtergeschalten von Gang 5 auf 4
+
+        }
+
+        static bool Starten(bool motorLaeuft)
+        {
+            if(motorLaeuft == false)
             {
-                StreamReader reader = new StreamReader(filepath, Encoding.UTF8);
-                List<string[]> myList = new List<string[]>();
-                reader.ReadLine();
-                while(!reader.EndOfStream)
-                {
-                    myList.Add(reader.ReadLine().Split(';'));
-                }
-                Console.WriteLine(myList[0]);
-                Console.WriteLine(myList.Count);
+                Console.WriteLine("Wir starten das Auto");
+                return true;
+            }
+            else{
+                Console.WriteLine("Motor läuft bereits");
+                return true;
+            }
+        }
 
-                
-                int endAlter = 100;
-                for(int alter = 18; alter<=endAlter; alter++ )
-                {
-                    Console.WriteLine("Aktuell bin ich bei Alter:" + alter);
-                    List<string[]> gefilterteEintraege =  myList
-                                    .Where(w => Convert.ToInt32(w[2]) == alter)
-                                    .ToList();
-                    using(StreamWriter writer = new StreamWriter($"C:/TraineeOffice/fff/New Text Document{alter}.csv", true, Encoding.UTF8))
-                    {
-                        foreach(string[] entry in gefilterteEintraege)
-                        {
-                            writer.WriteLine(string.Join('\t', entry));
-                        }
-                    }
-                }
+        static bool Ausschalten(bool motorLaeuft)
+        {
+            if(motorLaeuft == false)
+            {
+                Console.WriteLine("Das auto ist bereits aus");
+                return false;
+            }
+            else{
+                Console.WriteLine("Motor wird gestoppt");
+                return false;
+            }
+        }
 
-            }    
+        static int Beschleunigen(bool motorLauft, int geschwindgkeit, int aktuellerGang)
+        {
+            if(motorLauft == false)
+            {
+                Console.WriteLine("Können nicht beschleunigen Auto ist aus.");
+                return 0;
+            }
             else
             {
-                Console.WriteLine("Diese Datei existiert nicht");
+                geschwindgkeit = geschwindgkeit + 10;
+                Console.WriteLine($"Wir beschleunigen auf {geschwindgkeit}");
+                Console.WriteLine("das Auto wird hochgeschaltet");
+                int aktuellerGang1 = aktuellerGang++;
+                Console.WriteLine($"Wir schalten von {aktuellerGang} auf {aktuellerGang1} hoch");
+                return aktuellerGang1;  
             }
 
+        }
 
-         
-        } 
+        static int Bremsen(bool motorLauft, int geschwindgkeit, int aktuellerGang)
+        {
+            if(motorLauft == false)
+            {
+                Console.WriteLine("Können nicht beschleunigen Auto ist aus.");
+                return 0;
+            }
+            else
+            {
+                geschwindgkeit = geschwindgkeit - 10;
+                Console.WriteLine($"Wir bremsen auf {geschwindgkeit}");
+                Console.WriteLine("das Auto wird hochgeschaltet");
+                int aktuellerGang1 = aktuellerGang--;
+                Console.WriteLine($"Wir schalten von {aktuellerGang} auf {aktuellerGang1} runten");
+                return aktuellerGang1; 
+            }
+
+        }
+
+    
         
     }
-} 
-
-            
-         
-
-
+}
