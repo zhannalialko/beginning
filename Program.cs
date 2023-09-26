@@ -12,119 +12,160 @@ using System.Xml.XPath;
 using Microsoft.VisualBasic;
 using System.IO;
 using System.Text;
+using System.Dynamic;
+using System.Reflection.Metadata.Ecma335;
 namespace HelloWorld
 {
     class Programm
     {
         static void Main(string[] args)
         {   
-            int geschwindgkeit = 0;
-            bool motorLaeuft = false;
-            int aktuellerGang = 1;
+           Auto auto1 = new Auto();
+           auto1.Color = "red";
+           auto1.Geschwindigkeit = 40;
+           auto1.motorLauf = true;
+           auto1.Gang = 2;
+           auto1.Räder = 5;
+           auto1.Türen = 4;
+           auto1.Klasse = 1;
+           
+           
+           Auto auto2 = new Auto();
+           auto2.Color = "blue";
+           auto2.Geschwindigkeit = 0;
+           auto2.motorLauf = false;
+           auto2.Gang = 1;
+           auto2.Räder = 4;
+           auto2.Türen = 2;
+           auto2.Klasse = 2;
 
-            geschwindgkeit = Beschleunigen(motorLaeuft, geschwindgkeit, aktuellerGang);
-            motorLaeuft = Starten(motorLaeuft);
-            motorLaeuft = Starten(motorLaeuft);
 
-            motorLaeuft = Ausschalten(motorLaeuft);
-            motorLaeuft = Ausschalten(motorLaeuft);
-            motorLaeuft = Starten(motorLaeuft);
-            geschwindgkeit = Beschleunigen(motorLaeuft, geschwindgkeit, aktuellerGang);
-            geschwindgkeit = Beschleunigen(motorLaeuft, geschwindgkeit, aktuellerGang);
-            geschwindgkeit = Beschleunigen(motorLaeuft, geschwindgkeit, aktuellerGang);
-            geschwindgkeit = Bremsen(motorLaeuft, geschwindgkeit, aktuellerGang);
-            geschwindgkeit = Beschleunigen(motorLaeuft, geschwindgkeit, aktuellerGang);
-            geschwindgkeit = Bremsen(motorLaeuft, geschwindgkeit, aktuellerGang);
-            geschwindgkeit = Bremsen(motorLaeuft, geschwindgkeit, aktuellerGang);
-            geschwindgkeit = Bremsen(motorLaeuft, geschwindgkeit, aktuellerGang);
-
-
-            
-
-            //Wir erstellen Methoden wie ein Auto fährt
-
-            //Erstelle eine Methoden um das Auto zu starten
-            //   - Wenn das auto schonmal gestartet wurde, soll die Meldung kommen, Auto läuft bereits
-
-            //Auto ausschalten
-
-            //erstelle eine Methode Beschleunigen, welche die Geschwindigkeit um 10 erhöht.
-            //erstellen eine Methode Bremsen
-
-            // Erstelle eine Methode Hochschalten und eine Methode Runterschalten
-            // um die Gänge zu erhöhen bzw. reduzieren
-
-            // Gebe immer innerhalb der Methode aus was der aktuelle Status ist.
-            // z.B. Hochgeschalten von Gang 3 auf 4
-            // z.B. Runtergeschalten von Gang 5 auf 4
-
+           auto1.GiveMeYourColor();
+           auto1.WelcheGeschwindigkeit();
+           Console.WriteLine(auto1.ToString());
+           auto2.GiveMeYourColor();
+           auto2.WelcheGeschwindigkeit();
+           Console.WriteLine(auto2.ToString());
+           auto1.Fahren();
+           auto1.Bremsen();
+           auto1.Fahren();
         }
+    }
 
-        static bool Starten(bool motorLaeuft)
-        {
-            if(motorLaeuft == false)
-            {
-                Console.WriteLine("Wir starten das Auto");
-                return true;
-            }
-            else{
-                Console.WriteLine("Motor läuft bereits");
-                return true;
-            }
-        }
+    public class Auto
+    {
+        public int Geschwindigkeit {get;set;}
+        public bool motorLauf {get;set;}
 
-        static bool Ausschalten(bool motorLaeuft)
-        {
-            if(motorLaeuft == false)
-            {
-                Console.WriteLine("Das auto ist bereits aus");
-                return false;
-            }
-            else{
-                Console.WriteLine("Motor wird gestoppt");
-                return false;
-            }
-        }
+        public int Gang{get;set;}
 
-        static int Beschleunigen(bool motorLauft, int geschwindgkeit, int aktuellerGang)
-        {
-            if(motorLauft == false)
-            {
-                Console.WriteLine("Können nicht beschleunigen Auto ist aus.");
-                return 0;
-            }
-            else
-            {
-                geschwindgkeit = geschwindgkeit + 10;
-                Console.WriteLine($"Wir beschleunigen auf {geschwindgkeit}");
-                Console.WriteLine("das Auto wird hochgeschaltet");
-                int aktuellerGang1 = aktuellerGang++;
-                Console.WriteLine($"Wir schalten von {aktuellerGang} auf {aktuellerGang1} hoch");
-                return aktuellerGang1;  
-            }
+        public string Color {get; set;}
 
-        }
+        public int Klasse{get;set;}
 
-        static int Bremsen(bool motorLauft, int geschwindgkeit, int aktuellerGang)
-        {
-            if(motorLauft == false)
-            {
-                Console.WriteLine("Können nicht beschleunigen Auto ist aus.");
-                return 0;
-            }
-            else
-            {
-                geschwindgkeit = geschwindgkeit - 10;
-                Console.WriteLine($"Wir bremsen auf {geschwindgkeit}");
-                Console.WriteLine("das Auto wird hochgeschaltet");
-                int aktuellerGang1 = aktuellerGang--;
-                Console.WriteLine($"Wir schalten von {aktuellerGang} auf {aktuellerGang1} runten");
-                return aktuellerGang1; 
-            }
+        public int Türen{get;set;}
 
-        }
+        public int Räder{get;set;}
 
-    
+
         
+        public override string ToString()
+        {
+            return $"Klasse:{Klasse}, Räder:{Räder}, Türen:{Türen}, Color:{Color}".ToString();
+        }
+    
+        public void GiveMeYourColor()
+        {
+            Console.WriteLine($"My Color is: {Color}" );
+        }
+
+        public void WelcheGeschwindigkeit()
+        {
+            Console.WriteLine($"My speed is {Geschwindigkeit}");
+        }
+
+        public void Start()
+        {
+            if(motorLauf == false)
+            {
+                motorLauf = true;
+                Console.WriteLine($"the car gets started");
+            }
+             else
+            {
+                Console.WriteLine("the car has already started");
+            }   
+        }
+
+        public void Stop()
+        {
+            if(motorLauf == true)
+            {
+                motorLauf = false;
+                Console.WriteLine($"the car gets stopped");
+            }
+             else
+            {
+                Console.WriteLine("the car has already stopped");
+            }   
+        }
+
+        public void SpeedUp()
+        {
+            if(motorLauf == true)
+            {
+                Geschwindigkeit +=10;
+                Console.WriteLine($"We speed up to {Geschwindigkeit}");
+                int Gang1 = Gang++;
+                Console.WriteLine($"Gear has changed from {Gang1} to {Gang}");  
+            }
+            else
+            {
+                Console.WriteLine("We cannot speed up");
+                Console.WriteLine("Gear cannot change");
+            }
+            
+        }
+
+        public void Break()
+        {
+
+        if(motorLauf == true && Gang !=0)
+        {
+            Geschwindigkeit -=10;
+            Console.WriteLine($"We break up to {Geschwindigkeit}");
+            int Gang1 = Gang--;
+            Console.WriteLine($"Gear has changed from {Gang1} to {Gang}");
+        }
+         else
+        {
+            Console.WriteLine("We cannot break");
+            Console.WriteLine("Gear cannot change");
+        }
+        }
+
+        public void Fahren()
+        {
+            if(motorLauf == true)
+            {
+                Console.WriteLine("Das Auto fährt");
+            }
+            else
+            {
+                Console.WriteLine("Das Auto fährt nicht");
+            }
+        }
+            public void Bremsen()
+        {
+            if(motorLauf == false)
+            {
+                Console.WriteLine("Das Auto steht");
+            }
+            else
+            {
+                motorLauf = false;
+                Console.WriteLine("Das Auto hat gebremst");
+            }
+        }
     }
 }
