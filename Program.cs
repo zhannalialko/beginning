@@ -24,29 +24,15 @@ namespace HelloWorld
     {
         static void Main(string[] args)
         {   
-            Console.WriteLine("Wie viele Anträge möchtest du hinzufügen?");
-            int zahl = Convert.ToInt32(Console.ReadLine());
-            int [] numbers = new int[zahl];
+            Console.WriteLine("Schreib den Satz mit UPPERCASE Wörter");
+            string eingabe = Console.ReadLine();
 
-            for(int i = 0; i <numbers.Length; i++)
-            {
-                Console.WriteLine("Schreib eine Zahl");
-                int wert = Convert.ToInt32(Console.ReadLine());
-                numbers[i] = wert;
-            }
-            Console.WriteLine("Wie viel Anträge möchtest du sehen?");
-            int eingabe = Convert.ToInt32(Console.ReadLine());
-            
-            var result = from wert in numbers
-                         orderby wert descending
-                         select wert; 
+            var uppercasewords = eingabe.Split(' ').Where(w => w == w.ToUpper());
 
-            var newresult = result.Take(eingabe);
-            
-            foreach(int item in newresult)
+            foreach(var item in uppercasewords)
             {
-                Console.WriteLine(item);
-            }
+                Console.Write(item);
+            } 
         } 
              
     }
