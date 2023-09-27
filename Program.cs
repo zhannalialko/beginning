@@ -27,24 +27,26 @@ namespace HelloWorld
             Console.WriteLine("Wie viele Anträge möchtest du hinzufügen?");
             int zahl = Convert.ToInt32(Console.ReadLine());
             int [] numbers = new int[zahl];
-            int [] result = new int[zahl];
 
             for(int i = 0; i <numbers.Length; i++)
             {
                 Console.WriteLine("Schreib eine Zahl");
                 int wert = Convert.ToInt32(Console.ReadLine());
-                result[i] = wert;
+                numbers[i] = wert;
             }
+            Console.WriteLine("Wie viel Anträge möchtest du sehen?");
+            int eingabe = Convert.ToInt32(Console.ReadLine());
             
-            Console.WriteLine("Schreib eine durchnittliche Zahl");
-            int durchnitt = Convert.ToInt32(Console.ReadLine());
+            var result = from wert in numbers
+                         orderby wert descending
+                         select wert; 
 
-            var ergebnis = result.Where(x => x>durchnitt).ToArray();
-
-                foreach(int item in ergebnis)
-                {
-                    Console.Write($" {item} ");
-                } 
+            var newresult = result.Take(eingabe);
+            
+            foreach(int item in newresult)
+            {
+                Console.WriteLine(item);
+            }
         } 
              
     }
