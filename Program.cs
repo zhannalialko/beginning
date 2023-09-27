@@ -23,14 +23,15 @@ namespace HelloWorld
     {
         static void Main(string[] args)
         {   
-            int[] nums = new int[] { 5, 1, 9, 2, 3, 7, 4, 5, 6, 8, 7, 6, 3, 4, 5, 2 };
+            string[] cities = { "ROME","LONDON","NAIROBI","CALIFORNIA","ZURICH","NEW DELHI","AMSTERDAM","ABU DHABI", "PARIS" };
             
-            foreach(var item in nums.GroupBy(x => x))
+            for(int i = 0; i< cities.Length; i++)
             {
-                int result = item.Count() * item.Key;
-                Console.WriteLine($"Das Zeichen {item.Key} mal {item.Count()} ist {result}");
+                Console.WriteLine($"{cities[i]} => {cities[i].First()} and {cities[i].Last()}");
             }
-
+            
+                
+            
         } 
              
     }
