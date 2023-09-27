@@ -23,11 +23,12 @@ namespace HelloWorld
     {
         static void Main(string[] args)
         {   
-            string str = "w3resource";
+            int[] nums = new int[] { 5, 1, 9, 2, 3, 7, 4, 5, 6, 8, 7, 6, 3, 4, 5, 2 };
             
-            foreach(var item in str.GroupBy(x => x))
+            foreach(var item in nums.GroupBy(x => x))
             {
-                Console.WriteLine($"Das Zeichen {item.Key} entsteht {item.Count()} mal");
+                int result = item.Count() * item.Key;
+                Console.WriteLine($"Das Zeichen {item.Key} mal {item.Count()} ist {result}");
             }
 
         } 
