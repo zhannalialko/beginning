@@ -24,15 +24,11 @@ namespace HelloWorld
     {
         static void Main(string[] args)
         {   
-            Console.WriteLine("Schreib den Satz mit UPPERCASE Wörter");
-            string eingabe = Console.ReadLine();
+            string[] arr1 = new string[4] { "cat", "dog", "cow", "tiger" };
 
-            var uppercasewords = eingabe.Split(' ').Where(w => w == w.ToUpper());
-
-            foreach(var item in uppercasewords)
-            {
-                Console.Write(item);
-            } 
+            string joinedArr = arr1.Aggregate ((i, j) => i + ", " + j);
+            
+            Console.WriteLine(joinedArr);
         } 
              
     }
