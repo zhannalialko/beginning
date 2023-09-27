@@ -16,19 +16,26 @@ using System.Dynamic;
 using System.Reflection.Metadata.Ecma335;
 using System.Drawing;
 using System.Net.Http.Headers;
+using System.Xml.Schema;
 namespace HelloWorld
 {
     class Programm
     {
         static void Main(string[] args)
         {   
-            List<int> numbers = new List<int>(){1, 2, 3, 4, 5, 6, 7, 8, 9};
-            List<int> oddNumbers = numbers.FindAll(x => (x%2) != 0);
-
-            foreach(int num in oddNumbers)
+            var arr1 = new[] {3, 9, 2, 8, 6, 5};
+            List<int> arr2 = new List<int>();
+            Func<int, int> squareF = (x) => x*x;
+            
+            foreach(int num in arr1)
             {
-                Console.WriteLine(num);
+                int result = squareF(num);
+                if (result >20)
+                {
+                    arr2.Add(result);
+                }
             } 
+            arr2.ForEach(Console.WriteLine);
         } 
              
     }
