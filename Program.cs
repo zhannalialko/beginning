@@ -17,21 +17,34 @@ using System.Reflection.Metadata.Ecma335;
 using System.Drawing;
 using System.Net.Http.Headers;
 using System.Xml.Schema;
+using System.Security.Cryptography;
 namespace HelloWorld
 {
     class Programm
     {
         static void Main(string[] args)
         {   
-            string[] cities = { "ROME","LONDON","NAIROBI","CALIFORNIA","ZURICH","NEW DELHI","AMSTERDAM","ABU DHABI", "PARIS" };
-            
-            for(int i = 0; i< cities.Length; i++)
+            Console.WriteLine("Wie viele Anträge möchtest du hinzufügen?");
+            int zahl = Convert.ToInt32(Console.ReadLine());
+            int [] numbers = new int[zahl];
+            int [] result = new int[zahl];
+
+            for(int i = 0; i <numbers.Length; i++)
             {
-                Console.WriteLine($"{cities[i]} => {cities[i].First()} and {cities[i].Last()}");
+                Console.WriteLine("Schreib eine Zahl");
+                int wert = Convert.ToInt32(Console.ReadLine());
+                result[i] = wert;
             }
             
-                
-            
+            Console.WriteLine("Schreib eine durchnittliche Zahl");
+            int durchnitt = Convert.ToInt32(Console.ReadLine());
+
+            var ergebnis = result.Where(x => x>durchnitt).ToArray();
+
+                foreach(int item in ergebnis)
+                {
+                    Console.Write($" {item} ");
+                } 
         } 
              
     }
