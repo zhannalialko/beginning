@@ -23,9 +23,9 @@ namespace HelloWorld
         static void Main(string[] args)
         {   
             List<int> numbers = new List<int>(){1, 2, 3, 4, 5, 6, 7, 8, 9};
-            List<int> evenNumbers = numbers.FindAll(x => (x%2) == 0);
+            List<int> oddNumbers = numbers.FindAll(x => (x%2) != 0);
 
-            foreach(int num in evenNumbers)
+            foreach(int num in oddNumbers)
             {
                 Console.WriteLine(num);
             } 
