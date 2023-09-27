@@ -24,18 +24,12 @@ namespace HelloWorld
         static void Main(string[] args)
         {   
             var arr1 = new[] {3, 9, 2, 8, 6, 5};
-            List<int> arr2 = new List<int>();
-            Func<int, int> squareF = (x) => x*x;
+            var squares = arr1.Where(x => (x*x) >20).ToArray();
             
-            foreach(int num in arr1)
+            foreach(int number in squares)
             {
-                int result = squareF(num);
-                if (result >20)
-                {
-                    arr2.Add(result);
-                }
-            } 
-            arr2.ForEach(Console.WriteLine);
+                Console.WriteLine(number);
+            }
         } 
              
     }
