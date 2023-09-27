@@ -22,18 +22,13 @@ namespace HelloWorld
     {
         static void Main(string[] args)
         {   
-           string[,] my2dimArray = new string[5,5];
-           
-           for(int i = 0; i<my2dimArray.GetLength(0); i++)
-           {
-                for(int j = 0; j<my2dimArray.GetLength(1); j++)
-                {
-                    Random r = new Random();
-                    string number = Convert.ToString(r.Next(1,10));
-                    Console.Write(number, my2dimArray[i,j]);
-                }
-                Console.WriteLine();
-           }
+            List<int> numbers = new List<int>(){1, 2, 3, 4, 5, 6, 7, 8, 9};
+            List<int> evenNumbers = numbers.FindAll(x => (x%2) == 0);
+
+            foreach(int num in evenNumbers)
+            {
+                Console.WriteLine(num);
+            } 
         } 
              
     }
