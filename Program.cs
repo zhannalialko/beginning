@@ -32,21 +32,21 @@ namespace HelloWorld
            listOfString.Add("o"); 
            listOfString.Add("p"); 
            listOfString.Add("q"); 
-            
-           var badO = listOfString
-                        .Where(a => a == "o")
-                        .FirstOrDefault();
                         
-        listOfString = Removing(listOfString, badO);
+        string BadP = "p";
+        listOfString = Removing(listOfString, BadP);
 
         listOfString.ForEach(Console.WriteLine);
 
 
         static List<string> Removing(List<string> str, string item)
         {
+            var toRemove = str
+                        .Where(a => a == item)
+                        .FirstOrDefault();
             if(item !=  null)
             {
-                str.Remove(item);
+                str.Remove(toRemove);
                 return str;
             }
             else{
