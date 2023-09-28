@@ -32,10 +32,14 @@ namespace HelloWorld
             var set3 = Array.ConvertAll(set2, x=>x.ToString());
 
             for(int i=0; i<set1.Length; i++)
-            {
-                    var result = set1[i] + set3[i].ToString();
-
-                        Console.WriteLine(result);
+            {       
+                for(int j=0; j<set1.Length; j++)
+                {
+                    var result = set1[i] + set3[j].ToString();
+                
+                    Console.WriteLine(result);
+                }
+      
             }
 
         }
