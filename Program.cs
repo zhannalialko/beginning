@@ -25,36 +25,20 @@ namespace HelloWorld
     class Programm
     {
         static void Main(string[] args)
-        {  
-           List<string> listOfString = new List<string>(); 
-           listOfString.Add("m"); 
-           listOfString.Add("n"); 
-           listOfString.Add("o"); 
-           listOfString.Add("p"); 
-           listOfString.Add("q"); 
-                        
-        string BadP = "p";
-        listOfString = Removing(listOfString, BadP);
+        { 
+            var set1 = new string[] { "X", "Y", "Z" }; 
+            var set2 = new int[] { 1, 2, 3 };
 
-        listOfString.ForEach(Console.WriteLine);
+            var set3 = Array.ConvertAll(set2, x=>x.ToString());
 
-
-        static List<string> Removing(List<string> str, string item)
-        {
-            var toRemove = str
-                        .Where(a => a == item)
-                        .FirstOrDefault();
-            if(item !=  null)
+            for(int i=0; i<set1.Length; i++)
             {
-                str.Remove(toRemove);
-                return str;
+                    var result = set1[i] + set3[i].ToString();
+
+                        Console.WriteLine(result);
             }
-            else{
-                return str;
-            }
+
         }
-    
-    }
                          
     }
 }
