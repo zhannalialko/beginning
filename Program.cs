@@ -26,23 +26,37 @@ namespace HelloWorld
     {
         static void Main(string[] args)
         { 
-            var set1 = new string[] { "X", "Y", "Z" }; 
-            var set2 = new int[] { 1, 2, 3 };
-
-            var set3 = Array.ConvertAll(set2, x=>x.ToString());
-
-            for(int i=0; i<set1.Length; i++)
-            {       
-                for(int j=0; j<set1.Length; j++)
-                {
-                    var result = set1[i] + set3[j].ToString();
-                
-                    Console.WriteLine(result);
-                }
-      
+            Aquarium myAquarium = new Aquarium();
+            string[] myH = myAquarium.myHeigth(myAquarium.heigth);
+            foreach(var item in myH)
+            {
+                Console.WriteLine(item);
             }
-
+            Console.WriteLine(new string(myAquarium.width, 50));
         }
-                         
+
+        class Aquarium
+        {
+            public string heigth;
+
+            public char width;
+            public Aquarium()
+            {
+                heigth = "|                                                |";
+                width = '-';
+            } 
+            
+            public string [] myHeigth (string str)
+            {
+                string [] newstr = new string[10];
+                for(int i=0; i<newstr.Length; i++)
+                {
+                    newstr[i] = str;
+                }
+                return newstr;
+            }
+            
+        }
+
     }
 }
