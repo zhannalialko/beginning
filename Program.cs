@@ -26,20 +26,22 @@ namespace HelloWorld
     {
         static void Main(string[] args)
         {  
-            string[] arr1 = { "aaa.frx", "bbb.TXT", "xyz.dbf","abc.pdf",
-             "aaaa.PDF","xyz.frt", "abc.xml", "ccc.txt", "zzz.txt" };
+           List<string> listOfString = new List<string>(); 
+           listOfString.Add("m"); 
+           listOfString.Add("n"); 
+           listOfString.Add("o"); 
+           listOfString.Add("p"); 
+           listOfString.Add("q"); 
             
-            
-            var arr2 = arr1.Select(s => s.Split('.')[1].ToLower()).GroupBy(g => g);
-            
+           var badO = listOfString
+                        .Where(a => a == "o")
+                        .FirstOrDefault();
 
-            foreach(var item in arr2)
-            {
-                Console.WriteLine($"{item.Count()} File(s) with {item.Key} Extension");
-            }
+            if(badO != null)
+                    listOfString.Remove(badO);
+
+            listOfString.ForEach(Console.WriteLine);
+        }
                       
-        } 
-         
-             
     }
 }
