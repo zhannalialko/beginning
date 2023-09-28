@@ -36,12 +36,25 @@ namespace HelloWorld
            var badO = listOfString
                         .Where(a => a == "o")
                         .FirstOrDefault();
+                        
+        listOfString = Removing(listOfString, badO);
 
-            if(badO != null)
-                    listOfString.Remove(badO);
+        listOfString.ForEach(Console.WriteLine);
 
-            listOfString.ForEach(Console.WriteLine);
+
+        static List<string> Removing(List<string> str, string item)
+        {
+            if(item !=  null)
+            {
+                str.Remove(item);
+                return str;
+            }
+            else{
+                return str;
+            }
         }
-                      
+    
+    }
+                         
     }
 }
