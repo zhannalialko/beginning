@@ -20,6 +20,7 @@ using System.Xml.Schema;
 using System.Security.Cryptography;
 using System.Collections.Immutable;
 using System.Runtime.InteropServices;
+using System.Diagnostics.Contracts;
 namespace HelloWorld
 {
     class Programm
@@ -28,7 +29,6 @@ namespace HelloWorld
         { 
             Aquarium myAquarium = new Aquarium();
             Fish victim = new Fish();
-            
 
             char[] arr = new char[] {};
             arr = myAquarium.myHeigth(myAquarium.heigth);
@@ -43,19 +43,11 @@ namespace HelloWorld
                 result = arr[i].ToString() + emptiness + arr[i].ToString();
             }
             superresult = result.ToCharArray();
-            int j = 0;
+            int j = 16;
+            int m = 19;
+            int o = 5;
+            int z = 0;
 
-
-            /*while(j < 10)
-            {
-                for(int i = 0; i<superresult.Length; i++)
-                {
-                    Console.Write(superresult[i]);
-                }
-                Console.WriteLine();
-                j++;
-            }
-            */
             char[,] superAquarium = new char [10,52];
 
             
@@ -64,36 +56,148 @@ namespace HelloWorld
                 for(int k = 0; k<superAquarium.GetLength(1); k++)
                 {
                     superAquarium[i,k] = superresult[k];
-                    Console.Write(superAquarium[i,k]);
                 }
-                Console.WriteLine();
             }
             
-            for(int k=0; k<superAquarium.GetLength(1); k++)
+            while(j!=0 && m!=3)
             {
-                for(int i = 0; i<victim.carp.Length; i++)
+                if(j%4==0)
                 {
-                    superAquarium[5,k] = victim.carp[0];
-                    superAquarium[5,k] = victim.carp[1];
-                    superAquarium[5,k] = victim.carp[2];
+                    o++;
+                    j--;
+                    m--;
                 }
+                else if(j%2==0)
+                {
+                    o--;
+                    j--;
+                    m--;
+                }
+                else
+                {
+                    j--;
+                    m--;
+                }
+                for(int l=0; l<victim.carp.Length; l++)
+                {
+                    superAquarium[o,j+l] = empty;
+                    superAquarium[o, m] = empty;  
+                }
+
+                for(int l=0; l<victim.carp.Length; l++)
+                {
+                    superAquarium[o,j+l] = victim.carp[l];
+                    superAquarium[o, m] = empty;  
+                }
+                for(int i = 0; i<superAquarium.GetLength(0); i++)
+                    {
+                        for(int k = 0; k<superAquarium.GetLength(1); k++)
+                        {
+                            Console.Write(superAquarium[i,k]);
+                        }
+                        Console.WriteLine();
+                    }
+                    Console.Write(myAquarium.ecke);
+                    Console.Write(new string(myAquarium.width, 50));
+                    Console.WriteLine(myAquarium.ecke);
+                
+
+                for(int l=0; l<victim.carp.Length; l++)
+                {
+                    superAquarium[o,j+l] = empty;
+                    superAquarium[o, m] = empty;  
+                }
+
+                j--;
+                m--;
+
+            }
+            
+            if(j==0 && m==3)
+            {
+                j +=2;
+                m -=2;
             }
 
-            Thread.Sleep(millisecondsTimeout: 100);
-           
-            for(int i = 0; i<superAquarium.GetLength(0); i++)
-            {
-                for(int k = 0; k<superAquarium.GetLength(1); k++)
+                while(j!=49 && m!=47)
                 {
-                    Console.Write(superAquarium[i,k]);
-                }
-                Console.WriteLine();
-            }
+                    if(j%4==0)
+                    {
+                        o++;
+                        j++;
+                        m++;
+                    }
+                    else if(j%2==0)
+                    {
+                        o--;
+                        j++;
+                        m++;
+                    }
+                    else
+                    {
+                        j++;
+                        m++;
+                    }
+                    
+                    for(int l=0; l<victim.reversedcarp.Length; l++)
+                    {
+                        superAquarium[o,j+l] = empty;
+                        superAquarium[o, m] = empty;
+                    }   
+                    for(int l=0; l<victim.reversedcarp.Length; l++)
+                    {
+                        superAquarium[o,j+l] = victim.reversedcarp[l];
+                        superAquarium[o, m] = empty;
+                    }   
 
-            Console.Write(myAquarium.ecke);
-            Console.Write(new string(myAquarium.width, 50));
-            Console.WriteLine(myAquarium.ecke);
+                    for(int i = 0; i<superAquarium.GetLength(0); i++)
+                    {
+                        for(int k = 0; k<superAquarium.GetLength(1); k++)
+                        {
+                            Console.Write(superAquarium[i,k]);
+                        }
+                        Console.WriteLine();
+                    }
+                    Console.Write(myAquarium.ecke);
+                    Console.Write(new string(myAquarium.width, 50));
+                    Console.WriteLine(myAquarium.ecke);
+                    
+                    for(int l=0; l<victim.reversedcarp.Length; l++)
+                    {
+                        superAquarium[o,j+l] = empty;
+                        superAquarium[o, m] = empty;
+                    }
+                    j++;
+                    m++;
+                } 
+            
+            /*
+            while(j!=49 && m!=51) 
+            {
+                
+                for(int l=0; l<=victim.carp.Length; l++)
+                {
+                    superAquarium[5,m+l] = victim.carp[l];
+                    superAquarium[5, j] = empty;
+                }  
+
+                for(int i = 0; i<superAquarium.GetLength(0); i++)
+                {
+                    for(int k = 0; k<superAquarium.GetLength(1); k++)
+                    {
+                        Console.Write(superAquarium[i,k]);
+                    }
+                    Console.WriteLine();
+                }
+                Console.Write(myAquarium.ecke);
+                Console.Write(new string(myAquarium.width, 50));
+                Console.WriteLine(myAquarium.ecke);
   
+                j++;
+                m++;   
+            }
+          */
+        Thread.Sleep(millisecondsTimeout: 100);
         }
 
         class Aquarium
@@ -119,6 +223,7 @@ namespace HelloWorld
         class Fish : Aquarium
         {
             public string carp;
+            public string reversedcarp;
             public string shark;
             public string blowfish;
             public string swordfish;
@@ -126,6 +231,7 @@ namespace HelloWorld
             public Fish()
             {
                 carp = "<><";
+                reversedcarp = "><>";
                 shark = "<<///====><";
                 blowfish = "<()><";
                 swordfish = "-<><";
